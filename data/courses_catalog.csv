@@ -1,0 +1,62 @@
+course_id,codigo,nombre,facultad,semestre_recomendado,creditos,area_conocimiento,nivel_dificultad,prerequisitos_codigos,descripcion,prerequisitos_ids
+1,MTM-101,Matematica Basica,COMUN,1,3,Matematicas,3,,"Fundamentos de algebra, trigonometria y funciones matematicas.",
+2,MTM-201,Calculo I,COMUN,2,4,Matematicas,4,MTM-101,"Limites, derivadas e integrales de funciones de una variable.",1
+3,MTM-301,Calculo II,COMUN,3,4,Matematicas,4,MTM-201,"Integrales multiples, series y ecuaciones diferenciales ordinarias.",2
+4,MTM-401,Calculo III,COMUN,4,4,Matematicas,5,MTM-301,"Calculo vectorial, funciones de varias variables y teoremas de Stokes y Gauss.",3
+5,MTM-501,Algebra Lineal,COMUN,3,3,Matematicas,3,MTM-201,"Matrices, vectores, transformaciones lineales y valores propios.",2
+6,MTM-601,Estadistica y Probabilidad,COMUN,4,3,Matematicas,3,MTM-201,"Distribuciones de probabilidad, inferencia estadistica y analisis de datos.",2
+7,FIS-101,Fisica I,COMUN,2,4,Fisica,4,MTM-101,"Mecanica clasica: cinematica, dinamica, trabajo y energia.",1
+8,FIS-201,Fisica II,COMUN,3,4,Fisica,4,"FIS-101,MTM-201","Electromagnetismo, ondas y termodinamica basica.","7,2"
+9,QMC-101,Quimica General,COMUN,1,3,Ciencias Basicas,3,,"Estructura atomica, enlaces quimicos y reacciones quimicas fundamentales.",
+10,HUM-101,Espanol Tecnico,COMUN,1,2,Humanidades,2,,"Redaccion tecnica, ortografia y comunicacion escrita profesional.",
+11,HUM-201,Ingles Tecnico I,COMUN,2,2,Humanidades,2,,Vocabulario tecnico en ingles y lectura de textos especializados.,
+12,HUM-301,Ingles Tecnico II,COMUN,3,2,Humanidades,2,HUM-201,Comunicacion oral y escrita avanzada en ingles para ingenieria.,11
+13,ADM-101,Administracion General,COMUN,2,2,Administracion,2,,"Principios de administracion, planeacion estrategica y liderazgo.",
+14,ARS-101,Dibujo Tecnico,COMUN,1,3,Diseno,2,,"Normas de dibujo tecnico, vistas ortogonales y AutoCAD basico.",
+15,ETI-101,Etica Profesional,COMUN,8,2,Humanidades,1,,"Valores eticos, responsabilidad social y deontologia en ingenieria.",
+16,ISC-101,Introduccion a la Programacion,FISC,1,3,Programacion,2,,"Logica de programacion, algoritmos y pseudocodigo con Python.",
+17,ISC-201,Programacion Orientada a Objetos,FISC,2,3,Programacion,3,ISC-101,"Clases, herencia, polimorfismo y patrones de diseno basicos en Java.",16
+18,ISC-301,Estructuras de Datos,FISC,3,4,Programacion,4,"ISC-201,MTM-101","Listas, arboles, grafos y algoritmos de ordenamiento y busqueda.","17,1"
+19,ISC-401,Base de Datos I,FISC,4,3,Bases de Datos,3,ISC-201,"Modelo relacional, SQL, normalizacion y diseno de esquemas.",17
+20,ISC-402,Base de Datos II,FISC,5,3,Bases de Datos,4,ISC-401,"Procedimientos almacenados, triggers, transacciones y optimizacion.",19
+21,ISC-501,Redes de Computadoras,FISC,5,3,Redes,3,ISC-201,"Modelo OSI, protocolos TCP/IP, segmentacion y enrutamiento.",17
+22,ISC-502,Seguridad Informatica,FISC,6,3,Redes,4,ISC-501,"Criptografia, vulnerabilidades, firewalls y auditorias de seguridad.",21
+23,ISC-601,Ingenieria de Software I,FISC,5,3,Ingenieria de Software,3,ISC-301,"Ciclo de vida del software, metodologias agiles y modelado UML.",18
+24,ISC-602,Ingenieria de Software II,FISC,6,3,Ingenieria de Software,4,ISC-601,"Pruebas de software, arquitectura de sistemas y gestion de proyectos.",23
+25,ISC-701,Sistemas Operativos,FISC,5,3,Sistemas,4,ISC-301,"Procesos, hilos, memoria virtual, sistemas de archivos y Linux avanzado.",18
+26,ISC-801,Inteligencia Artificial,FISC,7,3,IA y Datos,4,"MTM-601,ISC-301","Busqueda heuristica, logica difusa, redes neuronales y aprendizaje automatico.","6,18"
+27,ISC-802,Ciencia de Datos,FISC,8,3,IA y Datos,4,"ISC-801,MTM-601","Pipeline de datos, visualizacion, ML aplicado y despliegue de modelos.","26,6"
+28,ISC-901,Desarrollo Web Full Stack,FISC,6,3,Desarrollo Web,3,ISC-401,"HTML, CSS, JavaScript, React, APIs REST y despliegue en la nube.",19
+29,ISC-902,Computacion en la Nube,FISC,8,3,Sistemas,3,"ISC-501,ISC-701","AWS, Azure, contenedores Docker, Kubernetes y arquitecturas serverless.","21,25"
+30,ISC-1001,Proyecto de Graduacion FISC,FISC,10,6,Investigacion,5,"ISC-602,ISC-801",Desarrollo e implementacion de un proyecto de software de grado.,"24,26"
+31,CIV-101,Topografia I,FIC,2,3,Topografia,3,ARS-101,"Levantamientos topograficos, altimetria y uso de equipo de precision.",14
+32,CIV-201,Materiales de Construccion,FIC,3,3,Construccion,3,QMC-101,"Propiedades mecanicas del concreto, acero, madera y materiales compuestos.",9
+33,CIV-301,Mecanica de Fluidos,FIC,4,4,Hidraulica,4,"FIS-201,MTM-301","Estatica y dinamica de fluidos, ecuacion de Bernoulli y flujo en tuberias.","8,3"
+34,CIV-401,Estructuras I,FIC,5,4,Estructuras,4,"CIV-201,MTM-401","Analisis de cargas, vigas, columnas y estructuras isostativas.","32,4"
+35,CIV-501,Hidraulica,FIC,5,4,Hidraulica,4,CIV-301,"Flujo en canales abiertos, bombas hidraulicas y redes de distribucion.",33
+36,CIV-601,Diseno de Pavimentos,FIC,7,3,Vias,4,CIV-401,"Metodos de diseno AASHTO, capas de asfalto y hormigon hidraulico.",34
+37,CIV-701,Proyecto de Graduacion FIC,FIC,10,6,Investigacion,5,"CIV-601,CIV-501","Proyecto integral de ingenieria civil con diseno, calculo y presupuesto.","36,35"
+38,ELE-101,Circuitos Electricos I,FIE,2,4,Circuitos,4,"FIS-201,MTM-201","Leyes de Kirchhoff, analisis nodal, thevenin y Norton.","8,2"
+39,ELE-201,Circuitos Electricos II,FIE,3,4,Circuitos,4,"ELE-101,MTM-301","Regimen sinusoidal, potencia activa y reactiva, filtros y resonancia.","38,3"
+40,ELE-301,Electronica I,FIE,4,3,Electronica,4,ELE-201,"Semiconductores, diodos, transistores BJT y amplificadores basicos.",39
+41,ELE-401,Maquinas Electricas,FIE,5,4,Potencia,4,ELE-201,"Transformadores, motores y generadores de corriente alterna y continua.",39
+42,ELE-501,Sistemas de Control,FIE,6,3,Control,5,"ELE-401,MTM-601","Funcion de transferencia, diagramas de Bode y controladores PID.","41,6"
+43,ELE-601,Sistemas de Potencia,FIE,7,4,Potencia,5,ELE-401,"Transmision y distribucion de energia electrica, flujos de carga y cortocircuitos.",41
+44,ELE-701,Proyecto de Graduacion FIE,FIE,10,6,Investigacion,5,"ELE-601,ELE-501",Proyecto de diseno e implementacion en sistemas electricos o electronicos.,"43,42"
+45,MEC-101,Mecanica de Solidos I,FIEM,2,4,Mecanica,4,"FIS-101,MTM-201","Estatica, equilibrio de cuerpos rigidos, celosias y momentos de inercia.","7,2"
+46,MEC-201,Termodinamica I,FIEM,3,4,Termica,4,"FIS-201,MTM-201","Primera y segunda ley de la termodinamica, ciclos termodinamicos.","8,2"
+47,MEC-301,Diseno Mecanico,FIEM,5,4,Diseno,4,"MEC-101,ARS-101","Diseno de elementos de maquinas, engranes, ejes y rodamientos.","45,14"
+48,MEC-401,Mecanismos y Maquinas,FIEM,5,3,Mecanica,4,MEC-101,"Cinematica de mecanismos, analisis de movimiento y sintesis de mecanismos.",45
+49,MEC-501,Control de Procesos Industriales,FIEM,7,3,Control,4,"MEC-401,MTM-601","Sensores, actuadores, PLCs y automatizacion de procesos.","48,6"
+50,MEC-601,Proyecto de Graduacion FIEM,FIEM,10,6,Investigacion,5,"MEC-501,MEC-301",Proyecto de diseno e implementacion de sistemas mecanicos o mecatronicos.,"49,47"
+51,IND-101,Procesos de Manufactura,FIIA,2,3,Produccion,3,ARS-101,"Fundiciones, maquinado, soldadura y procesos de conformado.",14
+52,IND-201,Investigacion de Operaciones I,FIIA,4,3,Optimizacion,4,MTM-601,"Programacion lineal, metodo simplex y teoria de grafos aplicada.",6
+53,IND-301,Control de Calidad,FIIA,5,3,Calidad,3,MTM-601,"Cartas de control, muestreo de aceptacion e ISO 9001.",6
+54,IND-401,Logistica y Cadena de Suministro,FIIA,6,3,Logistica,3,IND-201,"Gestion de inventarios, distribucion de planta y modelos de transporte.",52
+55,IND-501,Seguridad e Higiene Industrial,FIIA,7,3,Seguridad,2,,"Normativas OSHA, evaluacion de riesgos ocupacionales y planes de emergencia.",
+56,IND-601,Proyecto de Graduacion FIIA,FIIA,10,6,Investigacion,5,"IND-401,IND-301",Proyecto de mejora de procesos con impacto operativo y economico medible.,"54,53"
+57,MAT-501,Ecuaciones Diferenciales,FACIN,4,4,Matematicas,5,MTM-301,"EDOs, sistemas de ecuaciones, series de Fourier y ecuaciones en derivadas parciales.",3
+58,MAT-601,Analisis Numerico,FACIN,5,3,Matematicas,4,"MTM-401,ISC-101","Metodos numericos para ecuaciones, integracion y EDOs con Python.","4,16"
+59,MAT-701,Estadistica Inferencial,FACIN,5,3,Estadistica,4,MTM-601,"Pruebas de hipotesis, regresion multiple y analisis de varianza.",6
+60,MAT-801,Metodos Matematicos,FACIN,6,4,Matematicas,5,"MAT-501,MTM-401","Transformadas de Laplace y Fourier, funciones complejas y analisis tensorial.","57,4"
+61,MAT-901,Proyecto de Graduacion FACIN,FACIN,10,6,Investigacion,5,"MAT-801,MAT-701",Investigacion matematica aplicada a problemas de ingenieria o computacion.,"60,59"

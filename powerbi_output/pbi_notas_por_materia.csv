@@ -1,0 +1,62 @@
+﻿course_id,total_intentos,aprobados,nota_promedio,nota_min,nota_max,tasa_aprobacion_pct,codigo,nombre,facultad,area_conocimiento,nivel_dificultad,semestre_recomendado
+1,300,246,76.8,22.9,100.0,82.0,MTM-101,Matematica Basica,COMUN,Matematicas,3,1
+2,283,209,72.7,23.3,100.0,73.9,MTM-201,Calculo I,COMUN,Matematicas,4,2
+3,260,172,71.3,25.7,100.0,66.2,MTM-301,Calculo II,COMUN,Matematicas,4,3
+4,225,144,67.5,23.0,100.0,64.0,MTM-401,Calculo III,COMUN,Matematicas,5,4
+5,260,204,76.5,35.6,100.0,78.5,MTM-501,Algebra Lineal,COMUN,Matematicas,3,3
+6,225,187,77.5,32.2,100.0,83.1,MTM-601,Estadistica y Probabilidad,COMUN,Matematicas,3,4
+7,283,207,72.2,27.7,100.0,73.1,FIS-101,Fisica I,COMUN,Fisica,4,2
+8,260,197,72.6,23.0,100.0,75.8,FIS-201,Fisica II,COMUN,Fisica,4,3
+9,300,250,76.7,29.5,100.0,83.3,QMC-101,Quimica General,COMUN,Ciencias Basicas,3,1
+10,300,263,80.9,37.6,100.0,87.7,HUM-101,Espanol Tecnico,COMUN,Humanidades,2,1
+11,283,249,81.0,32.2,100.0,88.0,HUM-201,Ingles Tecnico I,COMUN,Humanidades,2,2
+12,260,232,80.7,32.3,100.0,89.2,HUM-301,Ingles Tecnico II,COMUN,Humanidades,2,3
+13,283,252,81.5,42.8,100.0,89.0,ADM-101,Administracion General,COMUN,Administracion,2,2
+14,300,261,80.8,40.2,100.0,87.0,ARS-101,Dibujo Tecnico,COMUN,Diseno,2,1
+15,107,101,85.3,51.3,100.0,94.4,ETI-101,Etica Profesional,COMUN,Humanidades,1,8
+16,43,37,79.4,43.2,100.0,86.0,ISC-101,Introduccion a la Programacion,FISC,Programacion,2,1
+17,43,33,73.4,25.4,100.0,76.7,ISC-201,Programacion Orientada a Objetos,FISC,Programacion,3,2
+18,41,29,69.9,28.0,98.6,70.7,ISC-301,Estructuras de Datos,FISC,Programacion,4,3
+19,41,31,74.2,35.0,100.0,75.6,ISC-401,Base de Datos I,FISC,Bases de Datos,3,4
+20,41,24,67.7,26.3,95.1,58.5,ISC-402,Base de Datos II,FISC,Bases de Datos,4,5
+21,41,30,72.7,32.6,98.9,73.2,ISC-501,Redes de Computadoras,FISC,Redes,3,5
+22,30,17,68.0,36.7,97.2,56.7,ISC-502,Seguridad Informatica,FISC,Redes,4,6
+23,30,21,71.6,31.5,100.0,70.0,ISC-601,Ingenieria de Software I,FISC,Ingenieria de Software,3,5
+24,30,22,70.1,20.3,100.0,73.3,ISC-602,Ingenieria de Software II,FISC,Ingenieria de Software,4,6
+25,30,22,70.0,23.9,94.5,73.3,ISC-701,Sistemas Operativos,FISC,Sistemas,4,5
+26,28,19,70.9,36.7,100.0,67.9,ISC-801,Inteligencia Artificial,FISC,IA y Datos,4,7
+27,19,14,71.8,34.2,94.3,73.7,ISC-802,Ciencia de Datos,FISC,IA y Datos,4,8
+28,28,22,76.0,28.2,100.0,78.6,ISC-901,Desarrollo Web Full Stack,FISC,Desarrollo Web,3,6
+29,19,13,72.7,42.9,97.5,68.4,ISC-902,Computacion en la Nube,FISC,Sistemas,3,8
+30,9,5,65.5,42.0,92.4,55.6,ISC-1001,Proyecto de Graduacion FISC,FISC,Investigacion,5,10
+31,30,24,74.6,40.3,97.0,80.0,CIV-101,Topografia I,FIC,Topografia,3,2
+32,30,23,72.8,36.5,97.6,76.7,CIV-201,Materiales de Construccion,FIC,Construccion,3,3
+33,26,18,69.3,27.8,93.2,69.2,CIV-301,Mecanica de Fluidos,FIC,Hidraulica,4,4
+34,26,18,71.4,33.1,93.9,69.2,CIV-401,Estructuras I,FIC,Estructuras,4,5
+35,26,18,68.6,28.3,89.7,69.2,CIV-501,Hidraulica,FIC,Hidraulica,4,5
+36,21,16,72.3,38.3,88.1,76.2,CIV-601,Diseno de Pavimentos,FIC,Vias,4,7
+37,9,7,72.3,46.8,84.1,77.8,CIV-701,Proyecto de Graduacion FIC,FIC,Investigacion,5,10
+38,35,29,75.3,31.9,94.0,82.9,ELE-101,Circuitos Electricos I,FIE,Circuitos,4,2
+39,35,25,72.4,36.7,100.0,71.4,ELE-201,Circuitos Electricos II,FIE,Circuitos,4,3
+40,34,26,73.6,42.9,99.4,76.5,ELE-301,Electronica I,FIE,Electronica,4,4
+41,34,24,72.9,43.5,100.0,70.6,ELE-401,Maquinas Electricas,FIE,Potencia,4,5
+42,25,18,71.0,39.0,89.1,72.0,ELE-501,Sistemas de Control,FIE,Control,5,6
+43,20,16,74.0,48.3,95.7,80.0,ELE-601,Sistemas de Potencia,FIE,Potencia,5,7
+44,6,4,67.8,36.5,81.7,66.7,ELE-701,Proyecto de Graduacion FIE,FIE,Investigacion,5,10
+45,38,27,73.3,43.4,100.0,71.1,MEC-101,Mecanica de Solidos I,FIEM,Mecanica,4,2
+46,38,30,75.4,47.0,98.5,78.9,MEC-201,Termodinamica I,FIEM,Termica,4,3
+47,32,25,73.5,46.7,98.3,78.1,MEC-301,Diseno Mecanico,FIEM,Diseno,4,5
+48,32,24,73.3,44.2,99.0,75.0,MEC-401,Mecanismos y Maquinas,FIEM,Mecanica,4,5
+49,24,17,71.7,40.7,100.0,70.8,MEC-501,Control de Procesos Industriales,FIEM,Control,4,7
+50,8,4,66.7,32.1,95.3,50.0,MEC-601,Proyecto de Graduacion FIEM,FIEM,Investigacion,5,10
+51,44,36,77.9,41.6,100.0,81.8,IND-101,Procesos de Manufactura,FIIA,Produccion,3,2
+52,44,35,74.3,36.8,100.0,79.5,IND-201,Investigacion de Operaciones I,FIIA,Optimizacion,4,4
+53,38,30,75.7,45.2,100.0,78.9,IND-301,Control de Calidad,FIIA,Calidad,3,5
+54,28,24,78.5,48.8,97.7,85.7,IND-401,Logistica y Cadena de Suministro,FIIA,Logistica,3,6
+55,26,24,82.1,41.1,100.0,92.3,IND-501,Seguridad e Higiene Industrial,FIIA,Seguridad,2,7
+56,8,7,74.4,54.4,82.7,87.5,IND-601,Proyecto de Graduacion FIIA,FIIA,Investigacion,5,10
+57,35,27,71.4,27.2,93.3,77.1,MAT-501,Ecuaciones Diferenciales,FACIN,Matematicas,5,4
+58,30,24,75.3,44.1,98.4,80.0,MAT-601,Analisis Numerico,FACIN,Matematicas,4,5
+59,30,24,75.4,36.4,96.9,80.0,MAT-701,Estadistica Inferencial,FACIN,Estadistica,4,5
+60,23,15,68.3,36.3,100.0,65.2,MAT-801,Metodos Matematicos,FACIN,Matematicas,5,6
+61,9,6,69.3,46.4,85.0,66.7,MAT-901,Proyecto de Graduacion FACIN,FACIN,Investigacion,5,10

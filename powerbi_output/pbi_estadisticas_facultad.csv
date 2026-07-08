@@ -1,0 +1,25 @@
+﻿facultad_codigo,facultad_nombre,cluster_label,n_estudiantes,promedio_general,asistencia_promedio,riesgo_score,tasa_reprobacion
+FACIN,Facultad de Ciencias Naturales y Exactas,Alto Rendimiento,16,86.96,88.67,10.5,0.05
+FACIN,Facultad de Ciencias Naturales y Exactas,En Riesgo,10,61.96,68.12,33.76,0.3
+FACIN,Facultad de Ciencias Naturales y Exactas,Rendimiento Regular,18,81.99,87.03,14.06,0.09
+FACIN,Facultad de Ciencias Naturales y Exactas,Riesgo Critico,3,58.39,51.77,43.57,0.4
+FIC,Facultad de Ingenieria Civil,Alto Rendimiento,11,82.09,86.2,14.22,0.09
+FIC,Facultad de Ingenieria Civil,En Riesgo,5,64.79,76.18,30.27,0.31
+FIC,Facultad de Ingenieria Civil,Rendimiento Regular,15,79.29,84.84,15.96,0.09
+FIC,Facultad de Ingenieria Civil,Riesgo Critico,9,50.48,55.28,50.29,0.59
+FIE,Facultad de Ingenieria Electricista,Alto Rendimiento,19,81.0,86.62,14.48,0.09
+FIE,Facultad de Ingenieria Electricista,En Riesgo,14,64.4,67.92,32.14,0.27
+FIE,Facultad de Ingenieria Electricista,Rendimiento Regular,15,83.47,84.37,14.22,0.09
+FIE,Facultad de Ingenieria Electricista,Riesgo Critico,4,51.58,64.03,42.58,0.42
+FIEM,Facultad de Ingenieria Mecanica,Alto Rendimiento,21,81.79,85.8,14.88,0.11
+FIEM,Facultad de Ingenieria Mecanica,En Riesgo,12,62.38,67.46,33.74,0.29
+FIEM,Facultad de Ingenieria Mecanica,Rendimiento Regular,14,81.74,89.0,13.01,0.07
+FIEM,Facultad de Ingenieria Mecanica,Riesgo Critico,4,56.5,62.02,43.53,0.51
+FIIA,Facultad de Ingenieria Industrial y Administrativa,Alto Rendimiento,14,84.23,87.82,13.19,0.1
+FIIA,Facultad de Ingenieria Industrial y Administrativa,En Riesgo,7,61.54,65.38,34.72,0.29
+FIIA,Facultad de Ingenieria Industrial y Administrativa,Rendimiento Regular,23,80.1,84.22,16.43,0.12
+FIIA,Facultad de Ingenieria Industrial y Administrativa,Riesgo Critico,6,49.84,58.17,47.0,0.49
+FISC,Facultad de Ingenieria de Sistemas Computacionales,Alto Rendimiento,26,82.26,85.93,14.28,0.09
+FISC,Facultad de Ingenieria de Sistemas Computacionales,En Riesgo,21,62.99,64.39,33.86,0.26
+FISC,Facultad de Ingenieria de Sistemas Computacionales,Rendimiento Regular,5,82.47,89.62,12.47,0.07
+FISC,Facultad de Ingenieria de Sistemas Computacionales,Riesgo Critico,8,46.04,54.43,50.87,0.53

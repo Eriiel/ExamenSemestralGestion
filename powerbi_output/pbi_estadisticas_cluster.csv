@@ -1,0 +1,5 @@
+﻿cluster_label,n_estudiantes,promedio_general,asistencia_promedio,tasa_reprobacion,avance_carrera,riesgo_score,tasa_reprobacion_pct,descripcion,color
+Alto Rendimiento,107,82.89,86.71,0.09,82.88,13.72,9.0,"Estudiante con excelente desempeno academico, alta asistencia y minima tasa de reprobacion.",#2ecc71
+Rendimiento Regular,90,81.29,85.95,0.09,83.63,14.76,9.0,"Estudiante con desempeno academico adecuado, cumple con los estandares minimos requeridos.",#3498db
+En Riesgo,69,63.0,67.14,0.28,66.01,33.3,28.0,"Estudiante con indicadores de alerta: GPA bajo, asistencia irregular o alto nivel de reprobaciones.",#f39c12
+Riesgo Critico,34,50.86,57.1,0.52,43.56,47.55,52.0,Estudiante en situacion critica con multiples indicadores de desercion o suspension academica.,#e74c3c
