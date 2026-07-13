@@ -2,7 +2,7 @@
 
 Sistema inteligente de gestion y analisis de datos estudiantiles para la Universidad Tecnologica de Panama.
 Integra un pipeline de datos en Python con clustering KMeans, un motor de recomendacion hibrido,
-generacion de informes con IA via Groq y un dashboard interactivo construido en Power BI.
+generacion de informes con IA via Groq, un chat interactivo para docentes y un dashboard construido en Power BI.
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-yellow)
@@ -16,7 +16,7 @@ generacion de informes con IA via Groq y un dashboard interactivo construido en 
 1. [Descripcion del Proyecto](#descripcion-del-proyecto)
 2. [Problema que Resuelve](#problema-que-resuelve)
 3. [Arquitectura del Sistema](#arquitectura-del-sistema)
-4. [Funcionalidades del Dashboard](#funcionalidades-del-dashboard)
+4. [Funcionalidades](#funcionalidades)
 5. [Tecnologias Utilizadas](#tecnologias-utilizadas)
 6. [Estructura del Repositorio](#estructura-del-repositorio)
 7. [Instalacion y Configuracion](#instalacion-y-configuracion)
@@ -31,8 +31,9 @@ generacion de informes con IA via Groq y un dashboard interactivo construido en 
 
 Este proyecto implementa un sistema de recomendacion academica para docentes y asesores de la UTP.
 El backend en Python se encarga de toda la logica de datos: ingesta de dos fuentes, limpieza,
-feature engineering, clustering de perfiles estudiantiles, motor de recomendacion de materias
-y generacion de informes personalizados con inteligencia artificial.
+feature engineering, clustering de perfiles estudiantiles, motor de recomendacion de materias,
+generacion de informes personalizados con inteligencia artificial y un chat interactivo donde
+el docente puede consultar informacion academica en lenguaje natural.
 
 Power BI actua como capa de visualizacion, consumiendo los archivos CSV exportados por el pipeline
 para mostrar un dashboard ejecutivo de cuatro paginas completamente interactivo.
@@ -45,7 +46,8 @@ que les permitan identificar rapidamente quienes estan en riesgo de desercion, q
 mas convenientes para cada perfil academico, ni obtener un informe detallado por estudiante sin
 invertir horas de analisis manual.
 
-Este sistema centraliza toda esa informacion y la convierte en decisiones accionables con un clic.
+Este sistema centraliza toda esa informacion y la convierte en decisiones accionables con un clic,
+ademas de permitir al docente hacer preguntas directas al sistema en lenguaje natural.
 
 
 ## Arquitectura del Sistema
@@ -67,40 +69,58 @@ Fuente 1: students_performance.csv         Fuente 2: courses_catalog.csv
                                    reports/
                             llm_reports.py        Groq API (gpt-oss-20b)
                                        |
-                            export_for_powerbi.py     exporta 6 CSVs
-                            generate_ai_reports.py    genera informes IA
-                                       |
-                               powerbi_output/
-                            pbi_estudiantes.csv
-                            pbi_recomendaciones.csv
-                            pbi_informes_ia.csv
-                            pbi_materias.csv
-                            pbi_estadisticas_cluster.csv
-                            pbi_estadisticas_facultad.csv
-                                       |
-                            Dashboard Power BI (.pbix)
+                  +--------------------+---------------------+
+                  |                                          |
+      export_for_powerbi.py                      chat_asesor.py
+      generate_ai_reports.py                     (chat interactivo)
+                  |
+          powerbi_output/
+      pbi_estudiantes.csv
+      pbi_recomendaciones.csv
+      pbi_informes_ia.csv
+      pbi_materias.csv
+      pbi_estadisticas_cluster.csv
+      pbi_estadisticas_facultad.csv
+                  |
+      Dashboard Power BI (.pbix)
 ```
 
 
-## Funcionalidades del Dashboard
+## Funcionalidades
 
-El dashboard de Power BI tiene cuatro paginas interactivas:
+**Pipeline de datos**
+Carga, limpia y combina dos fuentes de datos (rendimiento estudiantil y catalogo de materias),
+genera features de ML y exporta archivos enriquecidos listos para Power BI.
 
-**Pagina 1: Panel General**
-KPIs principales (total estudiantes, estudiantes en riesgo, GPA promedio, score de riesgo promedio),
-grafico de dona con distribucion por perfil de cluster y grafico de barras por facultad.
+**Clustering de perfiles**
+Agrupa automaticamente a los estudiantes en cuatro perfiles academicos usando KMeans,
+etiquetando cada cluster con un nombre semantico segun sus centroides.
 
-**Pagina 2: Estudiantes en Riesgo**
-Tabla filtrable con todos los estudiantes en perfiles En Riesgo y Riesgo Critico. Incluye
-segmentaciones por cluster y facultad, y un grafico de barras ordenado por score de riesgo descendente.
+**Motor de recomendacion**
+Genera las top 5 materias recomendadas por estudiante usando un sistema de scoring hibrido
+que considera afinidad por area, nivel de dificultad, exito historico del cluster y semestre.
 
-**Pagina 3: Recomendaciones**
-Segmentacion por nombre de estudiante que filtra dinamicamente una tabla con las 5 materias
-recomendadas, incluyendo area, creditos, nivel de dificultad, puntaje de compatibilidad y razon.
+**Informes con IA (batch)**
+Genera un informe academico personalizado por cada estudiante en riesgo llamando a la API
+gratuita de Groq. Cada informe incluye resumen del perfil, evaluacion del riesgo, fortalezas,
+areas de mejora y un plan de accion con materias recomendadas.
 
-**Pagina 4: Informes con IA**
-Seleccion de estudiante que muestra el informe academico completo generado por Groq, con resumen
-del perfil, evaluacion del riesgo, fortalezas detectadas, areas de mejora y plan de accion.
+**Chat interactivo para docentes**
+Permite al docente hacer preguntas en lenguaje natural sobre sus estudiantes directamente
+desde la terminal. El LLM recibe el contexto completo del pipeline y responde con datos reales.
+
+Ejemplos de preguntas:
+```
+Cuales son los 3 estudiantes en mayor riesgo de FISC?
+Dame un resumen academico de Carlos Pimentel
+Que materia tiene mayor tasa de reprobacion?
+Cuantos estudiantes de FIEM estan en riesgo critico?
+Que perfil predomina en el semestre 3?
+```
+
+**Dashboard Power BI**
+Cuatro paginas interactivas: Panel General con KPIs, Estudiantes en Riesgo con filtros,
+Recomendaciones por estudiante e Informes de IA generados por Groq.
 
 
 ## Tecnologias Utilizadas
@@ -113,7 +133,6 @@ del perfil, evaluacion del riesgo, fortalezas detectadas, areas de mejora y plan
 | Procesamiento      | Pandas, NumPy                          |
 | LLM gratuito       | Groq API con openai/gpt-oss-20b        |
 | Variables entorno  | python-dotenv                          |
-| Visualizacion      | Power BI con temas de colores UTP      |
 
 
 ## Estructura del Repositorio
@@ -121,18 +140,20 @@ del perfil, evaluacion del riesgo, fortalezas detectadas, areas de mejora y plan
 ```
 utp-academic-system/
 |
-+-- export_for_powerbi.py           Pipeline completo + exportacion de CSVs
-+-- generate_ai_reports.py          Generacion batch de informes con Groq
++-- export_for_powerbi.py           Pipeline completo y exportacion de CSVs
++-- generate_ai_reports.py          Generacion batch de informes con IA
++-- chat_asesor.py                  Chat interactivo para docentes con LLM
 +-- requirements.txt                Dependencias del proyecto
 +-- .env.example                    Plantilla de variables de entorno
 +-- .gitignore
 +-- README.md
++-- utp_academic_advisor.pbix       Dashboard Power BI
 |
 +-- data/
 |   +-- generate_data.py            Generador de datasets simulados UTP
 |   +-- students_performance.csv    Fuente 1: rendimiento estudiantil
 |   +-- courses_catalog.csv         Fuente 2: catalogo de 61 materias
-|   +-- student_grades.csv          Fuente 3: historial de notas (5246 registros)
+|   +-- student_grades.csv          Historial de notas (5246 registros)
 |
 +-- pipeline/
 |   +-- ingestion.py                Carga y validacion de las dos fuentes
@@ -226,8 +247,6 @@ python generate_ai_reports.py
 ```
 
 Llama a Groq por cada estudiante en riesgo y genera un informe academico personalizado.
-Exporta pbi_informes_ia.csv en powerbi_output/.
-
 Para probar con pocos estudiantes primero:
 
 ```bash
@@ -242,17 +261,34 @@ Obtener datos > Texto/CSV
 **Paso 5: Crea las relaciones en la vista Modelo**
 
 ```
-pbi_estudiantes.student_id  →  pbi_recomendaciones.student_id  (1 a varios)
-pbi_estudiantes.student_id  →  pbi_informes_ia.student_id      (1 a 1)
-pbi_materias.course_id      →  pbi_notas_por_materia.course_id (1 a varios)
+pbi_estudiantes.student_id  a  pbi_recomendaciones.student_id  (1 a varios)
+pbi_estudiantes.student_id  a  pbi_informes_ia.student_id      (1 a 1)
+pbi_materias.course_id      a  pbi_notas_por_materia.course_id (1 a varios)
 ```
 
 **Paso 6: Construye el dashboard**
 
-Crea cuatro paginas en Power BI usando los CSVs como fuentes de cada visual.
+Crea cuatro paginas en Power BI con los CSVs como fuentes:
+
+```
+Pagina 1: Panel General          KPIs, dona por cluster, barras por facultad
+Pagina 2: Estudiantes en Riesgo  Tabla filtrable, segmentaciones, barras de riesgo
+Pagina 3: Recomendaciones        Segmentacion por estudiante, tabla de materias
+Pagina 4: Informes IA            Segmentacion por estudiante, tabla con informe_ia
+```
+
 Guarda el archivo como utp_academic_advisor.pbix dentro de la carpeta del proyecto.
 
-**Para actualizar los datos:**
+**Chat interactivo con el Asesor Academico**
+
+```bash
+python chat_asesor.py
+```
+
+El docente puede hacer preguntas en lenguaje natural. El chat mantiene memoria
+de los ultimos 10 turnos. Escribe salir para terminar la sesion.
+
+**Para actualizar los datos en cualquier momento:**
 
 ```bash
 python export_for_powerbi.py
@@ -274,7 +310,7 @@ promedio_general, asistencia_promedio, creditos_aprobados, tasa_reprobacion, est
 Columnas principales: course_id, codigo, nombre, facultad, semestre_recomendado, creditos,
 area_conocimiento, nivel_dificultad, prerequisitos_ids.
 
-**student_grades.csv (Fuente 3)**
+**student_grades.csv**
 5246 registros de historial de notas por estudiante y materia.
 Columnas: student_id, course_id, nota, aprobado, num_intentos.
 
@@ -321,8 +357,8 @@ comun, y todos sus prerequisitos deben estar aprobados.
 
 ## API de LLM Gratuita
 
-Este proyecto usa la API de Groq con el modelo openai/gpt-oss-20b (reemplazo oficial
-de llama-3.1-8b-instant segun deprecacion anunciada el 17 de junio de 2026).
+Este proyecto usa la API de Groq con el modelo openai/gpt-oss-20b, reemplazo oficial
+de llama-3.1-8b-instant (usada en el parcial 2) segun la deprecacion anunciada el 17 de junio de 2026.
 
 Para obtener tu API key gratuita:
 
@@ -331,16 +367,15 @@ Para obtener tu API key gratuita:
 3. Crea una nueva clave y copiala.
 4. Agrega al archivo .env: GROQ_API_KEY=tu_clave_aqui
 
-Los limites del plan gratuito son suficientes para generar informes de todos los
-estudiantes en riesgo de un semestre academico completo.
-
 
 ## Autores
 
-Desarrollado como proyecto integrador del curso de Ciencia de Datos.
-Universidad Tecnologica de Panama, Facultad de Ingenieria en Sistemas Computacionales.
-
+# Felix Beitia
+# Gonzalo Hooker
+# María Madrid
+# Cristopher Quintero
+# Eriol Tuñon
 
 ## Licencia
 
-MIT License. Libre para uso academico y educativo.
+Libre para uso academico y educativo.
