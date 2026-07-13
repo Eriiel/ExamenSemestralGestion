@@ -89,12 +89,6 @@ def build_context(df: pd.DataFrame, courses: pd.DataFrame, grades: pd.DataFrame)
         ["nombre", "facultad", "tasa_aprobacion", "nota_promedio"]
     ].to_dict(orient="records")
 
-    lista_estudiantes = df[
-        ["nombre_completo", "facultad_codigo", "carrera", "semestre_actual",
-         "promedio_general", "asistencia_promedio", "tasa_reprobacion",
-         "riesgo_score", "cluster_label", "estado_academico"]
-    ].to_dict(orient="records")
-
     contexto = f"""
 RESUMEN GENERAL
 Total de estudiantes     : {total}
@@ -115,14 +109,58 @@ TOP 10 ESTUDIANTES CON MAYOR RIESGO
 MATERIAS CON MAYOR TASA DE REPROBACION
 {json.dumps(materias_dificiles, ensure_ascii=False, indent=2)}
 
-LISTA COMPLETA DE ESTUDIANTES
-{json.dumps(lista_estudiantes, ensure_ascii=False, indent=2)}
+NOTA: No tienes la lista completa de estudiantes en este contexto (son {total}
+en total, es demasiada informacion para enviar siempre). Si el usuario
+pregunta por un estudiante especifico, su informacion se te adjuntara
+por separado justo antes de la pregunta cuando este disponible. Si no
+aparece adjunta, indica que no encontraste a ese estudiante por nombre
+exacto y pide que verifique la ortografia.
 """.strip()
 
     return contexto
 
 
-def ask_llm(pregunta: str, historial: list, system_prompt: str) -> str:
+def find_student_context(pregunta: str, df: pd.DataFrame, limite: int = 5) -> str:
+    """
+    Busca en el DataFrame estudiantes cuyo nombre aparezca mencionado en la
+    pregunta del usuario, para inyectar solo esos registros puntuales en
+    lugar de mandar el dataset completo en cada llamada al LLM.
+
+    Args:
+        pregunta: Texto de la pregunta del usuario.
+        df:       DataFrame de estudiantes con clusters asignados.
+        limite:   Maximo de estudiantes a incluir si hay varias coincidencias.
+
+    Returns:
+        Cadena JSON con los estudiantes encontrados, o "" si no hubo match.
+    """
+    pregunta_norm = pregunta.lower()
+
+    columnas = [
+        "nombre_completo", "facultad_codigo", "carrera", "semestre_actual",
+        "promedio_general", "asistencia_promedio", "tasa_reprobacion",
+        "creditos_aprobados", "creditos_reprobados", "riesgo_score",
+        "cluster_label", "estado_academico"
+    ]
+    columnas = [c for c in columnas if c in df.columns]
+
+    def nombre_coincide(nombre_completo: str) -> bool:
+        # Requiere que al menos un token del nombre (>=4 caracteres, para
+        # evitar falsos positivos con palabras cortas) aparezca en la pregunta.
+        tokens = [t for t in nombre_completo.lower().split() if len(t) >= 4]
+        return any(t in pregunta_norm for t in tokens)
+
+    coincidencias = df[df["nombre_completo"].apply(nombre_coincide)]
+
+    if coincidencias.empty:
+        return ""
+
+    coincidencias = coincidencias.head(limite)
+    registros = coincidencias[columnas].to_dict(orient="records")
+    return json.dumps(registros, ensure_ascii=False, indent=2)
+
+
+def ask_llm(pregunta: str, historial: list, system_prompt: str, df: pd.DataFrame = None) -> str:
     """
     Envia la pregunta del usuario al LLM de Groq con el historial de conversacion.
 
@@ -130,13 +168,26 @@ def ask_llm(pregunta: str, historial: list, system_prompt: str) -> str:
         pregunta:      Pregunta actual del usuario.
         historial:     Lista de mensajes anteriores de la conversacion.
         system_prompt: Prompt de sistema con el contexto de datos.
+        df:            DataFrame de estudiantes, usado para buscar datos
+                        puntuales de un estudiante mencionado en la pregunta.
 
     Returns:
         Respuesta del LLM como cadena de texto.
     """
+    contenido_usuario = pregunta
+
+    if df is not None:
+        datos_estudiante = find_student_context(pregunta, df)
+        if datos_estudiante:
+            contenido_usuario = (
+                "[DATOS DEL/LOS ESTUDIANTE(S) ENCONTRADO(S) PARA ESTA PREGUNTA]\n"
+                f"{datos_estudiante}\n\n"
+                f"PREGUNTA DEL USUARIO: {pregunta}"
+            )
+
     mensajes = [{"role": "system", "content": system_prompt}]
     mensajes += historial
-    mensajes.append({"role": "user", "content": pregunta})
+    mensajes.append({"role": "user", "content": contenido_usuario})
 
     payload = {
         "model": GROQ_MODEL,
@@ -217,7 +268,7 @@ def main():
         print("Asesor: ", end="", flush=True)
 
         try:
-            respuesta = ask_llm(pregunta, historial, system_prompt)
+            respuesta = ask_llm(pregunta, historial, system_prompt, df)
             print(respuesta)
 
             historial.append({"role": "user",      "content": pregunta})
